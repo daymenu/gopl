@@ -3,26 +3,34 @@ package tempconv
 import (
 	"flag"
 	"fmt"
+	"strings"
 )
 
 type Celsius float64
 type Fahrenheit float64
+type Kelvins float64
 type celsiusFlag struct{ Celsius }
 
 func FToC(f Fahrenheit) Celsius {
 	return Celsius((f - 32.0) * (5.0 / 9.0))
 }
-
+func KToC(k Kelvins) Celsius {
+	return Celsius(k + 273.15)
+}
 func (f *celsiusFlag) Set(s string) error {
 	var unit string
 	var value float64
-	fmt.Scanf(s, "%f%s", &value, &unit)
-	switch unit {
-	case "c", "°C":
+	fmt.Sscanf(s, "%f%s", &value, &unit)
+
+	switch strings.ToUpper(unit) {
+	case "C", "°C":
 		f.Celsius = Celsius(value)
 		return nil
 	case "F", "°F":
 		f.Celsius = FToC(Fahrenheit(value))
+		return nil
+	case "K", "°K":
+		f.Celsius = KToC(Kelvins(value))
 		return nil
 	}
 	return fmt.Errorf("invalid temperature %q", s)
