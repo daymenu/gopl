@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+            <th>名称</th>
+            <th>价格</th>
+            <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Goods}}
+            <tr>
+                <td><a href="/price?item={{.Good}}">{{.Good}}</a></td>
+                <td>{{.Price}}</td>
+                <td><a href="/edit?item={{.Good}}">编辑</a></td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</body>
+
+</html>
