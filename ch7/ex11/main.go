@@ -18,7 +18,8 @@ type good struct {
 	Price dollars
 }
 type database []struct {
-	good
+	Good  string
+	Price dollars
 }
 
 func (d dollars) String() string {
@@ -26,11 +27,12 @@ func (d dollars) String() string {
 }
 
 func main() {
-	db := database{{"shoes", 50}, {"socks", 5}}
+	db := database{{"shoes", 50}, {"socks", 5}, {"cap", 50}}
 	http.HandleFunc("/list", db.list)
 	http.HandleFunc("/price", db.price)
 	http.HandleFunc("/edit", db.edit)
 	http.HandleFunc("/save", db.save)
+	http.HandleFunc("/delete", db.delete)
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
 }
 
@@ -110,6 +112,23 @@ func (db database) save(w http.ResponseWriter, r *http.Request) {
 		if item.Good == goodName {
 			db[i].Good = newName
 			db[i].Price = dollars(price)
+			db.list(w, r)
+			return
+		}
+	}
+}
+
+func (db database) delete(w http.ResponseWriter, r *http.Request) {
+	goodName := r.URL.Query().Get("item")
+	fmt.Println(db)
+	for i, item := range db {
+		if item.Good == goodName {
+			if len(db) == 1 {
+				fmt.Fprint(w, db)
+				db = nil
+			} else {
+				db = append(db[:i], db[i+1:]...)
+			}
 			db.list(w, r)
 			return
 		}

@@ -22,7 +22,10 @@
             <tr>
                 <td><a href="/price?item={{.Good}}">{{.Good}}</a></td>
                 <td>{{.Price}}</td>
-                <td><a href="/edit?item={{.Good}}">编辑</a></td>
+                <td>
+                    <a href="/edit?item={{.Good}}">编辑</a>
+                    <a href="/delete?item={{.Good}}">删除</a>
+                </td>
             </tr>
             {{end}}
         </tbody>
