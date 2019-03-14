@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	done := make(chan struct{})
+	done := make(chan struct{}, 1)
 	go func() {
 		log.Println("recieved data")
 		io.Copy(os.Stdout, conn)
@@ -20,9 +20,9 @@ func main() {
 		done <- struct{}{}
 	}()
 
-	mustCopy(conn, os.Stdin)
-	conn.Close()
+	go mustCopy(conn, os.Stdin)
 	<-done
+	conn.Close()
 }
 
 func mustCopy(dst io.Writer, src io.Reader) {
