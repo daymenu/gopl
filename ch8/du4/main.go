@@ -12,8 +12,15 @@ import (
 
 var verbose = flag.Bool("v", false, "show verbose progress messages")
 
+var done = make(chan struct{})
+
 func main() {
+	go func() {
+		os.Stdin.Read(make([]byte, 1))
+		close(done)
+	}()
 	flag.Parse()
+
 	roots := flag.Args()
 	if len(roots) == 0 {
 		roots = []string{"."}
@@ -37,6 +44,10 @@ func main() {
 loop:
 	for {
 		select {
+		case <-done:
+			for range fileSizes {
+
+			}
 		case size, ok := <-fileSizes:
 			if !ok {
 				break loop
@@ -48,12 +59,16 @@ loop:
 		}
 	}
 	printDiskUsage(nfiles, nbytes)
+
 }
 func printDiskUsage(nfiles, nbytes int64) {
 	fmt.Printf("%d files %.1f GB\n", nfiles, float64(nbytes/1e9))
 }
 func walkDir(dir string, n *sync.WaitGroup, fileSizes chan<- int64) {
 	defer n.Done()
+	if cancelled() {
+		return
+	}
 	for _, entry := range dirents(dir) {
 		if entry.IsDir() {
 			n.Add(1)
@@ -78,10 +93,11 @@ func dirents(dir string) []os.FileInfo {
 	return entries
 }
 
-var done = make(chan struct{})
-
-func cancelled() bool{
+func cancelled() bool {
 	select {
-		
+	case <-done:
+		return true
+	default:
+		return false
 	}
 }
