@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -14,14 +14,14 @@ func main() {
 		url = httpPrefix(url)
 		resp, err := http.Get(url)
 		if err != nil {
-			log.Printf("fetch %v\n", err)
+			log.Printf("fetch: %v\n", err)
 		}
 		defer resp.Body.Close()
-		data, err := ioutil.ReadAll(resp.Body)
+		fmt.Println(resp.Status)
+		_, err = io.Copy(os.Stdout, resp.Body)
 		if err != nil {
-			log.Printf("read data %s is faild, error %v", url, err)
+			log.Printf("read: %v\n", err)
 		}
-		fmt.Println(string(data))
 	}
 }
 
