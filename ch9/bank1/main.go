@@ -18,8 +18,9 @@ func Balance() int {
 	return <-balances
 }
 
-func WhitDraw(amount int) {
-
+func WhitDraw(amount int) bool {
+	withdraws <- amount
+	return <-withdrawed
 }
 func teller() {
 	var balance int
@@ -28,6 +29,13 @@ func teller() {
 		case amount := <-deposits:
 			balance += amount
 		case balances <- balance:
+		case amount := <-withdraws:
+			if balance < amount {
+				withdrawed <- false
+			} else {
+				balance -= amount
+				withdrawed <- true
+			}
 		}
 	}
 }
