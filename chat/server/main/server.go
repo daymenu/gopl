@@ -24,5 +24,4 @@ func runServer(addr string) (err error) {
 
 func proccess(s net.Conn) {
 	defer s.Close()
-
 }
