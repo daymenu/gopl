@@ -13,11 +13,12 @@ func New() (*sql.DB, error) {
 	if defaultDb != nil {
 		return defaultDb, nil
 	}
-	db, err := sql.Open("mysql", "root:mysqldb1314@tcp(127.0.0.1:3306)/test")
+	var err error
+	defaultDb, err = sql.Open("mysql", "root:mysqldb1314@tcp(daymenu.cn:3306)/test")
 	if err != nil {
 		log.Fatal(err)
 	}
-	return db, err
+	return defaultDb, err
 }
 
 func Close() {
