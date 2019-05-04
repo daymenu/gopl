@@ -11,8 +11,7 @@ import (
 )
 
 func Show(w http.ResponseWriter, r *http.Request) {
-	defer models.Close()
-	user, err := models.GetUserById(5)
+	user, err := models.GetUserById(2)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -48,7 +47,6 @@ func Put(w http.ResponseWriter, r *http.Request) {
 	user.UpdatedAt = time.Now().Unix()
 	var err error
 	_, err = models.UpdateUser(id, &user)
-	defer models.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -56,6 +54,22 @@ func Put(w http.ResponseWriter, r *http.Request) {
 	w.Write(userJson)
 }
 
+func Delete(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	id, _ := strconv.ParseInt(r.Form.Get("id"), 10, 64)
+	var err error
+	_, err = models.DeleteUser(id)
+	if err != nil {
+		log.Fatal(err)
+	}
+	json.NewEncoder(w).Encode(struct {
+		Code int
+		Msg  string
+	}{
+		200,
+		"删除成功",
+	})
+}
 func User(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
@@ -64,5 +78,7 @@ func User(w http.ResponseWriter, r *http.Request) {
 		Post(w, r)
 	case "PUT":
 		Put(w, r)
+	case "DELETE":
+		Delete(w, r)
 	}
 }

@@ -118,3 +118,26 @@ func UpdateUser(id int64, user *User) (int64, error) {
 	}
 	return r.RowsAffected()
 }
+
+func DeleteUser(id int64) (int64, error) {
+	if id < 1 {
+		return 0, fmt.Errorf("请传入要删除的ID")
+	}
+	db, err := New()
+	if err != nil {
+		return 0, err
+	}
+	sql := fmt.Sprintf("DELETE FROM %s WHERE id=?", UserTableName)
+	stmt, err := db.Prepare(sql)
+	if err != nil {
+		return 0, err
+	}
+	defer stmt.Close()
+	r, err := stmt.Exec(id)
+
+	if err != nil {
+		return 0, err
+	}
+	return r.RowsAffected()
+
+}
