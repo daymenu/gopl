@@ -16,7 +16,7 @@ func New() (*sql.DB, error) {
 		return defaultDb, nil
 	}
 	var err error
-	defaultDb, err = sql.Open("mysql", "root:mysqldb1314@tcp(daymenu.cn:3306)/test")
+	defaultDb, err = sql.Open("mysql", "go:go@tcp(localhost:3306)/test")
 	if err != nil {
 		log.Fatal(err)
 	}
