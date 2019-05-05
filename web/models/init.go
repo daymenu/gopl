@@ -2,7 +2,6 @@ package models
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -11,7 +10,6 @@ import (
 var defaultDb *sql.DB
 
 func New() (*sql.DB, error) {
-	fmt.Println(defaultDb)
 	if defaultDb != nil {
 		return defaultDb, nil
 	}
