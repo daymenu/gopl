@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unicode/utf8"
+)
 
 func main() {
+	fmt.Println(utf8.UTFMax)
 	var arr [3]int
 	fmt.Println(arr[0])
 	fmt.Println(arr[len(arr)-1])

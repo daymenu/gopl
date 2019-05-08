@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	ch := make(chan string)
+	ch := make(chan string) //由于该chan没有缓存，所以go会在 39行暂停处暂停
 	for _, url := range os.Args[1:] {
 		go fetch(url, ch)
 	}
@@ -20,9 +20,12 @@ func main() {
 	for range os.Args[1:] {
 		fmt.Println(<-ch)
 	}
+
+	time.Sleep(1 * time.Second)
 }
 
 func fetch(url string, ch chan<- string) {
+	fmt.Println("fetch:", url)
 	start := time.Now()
 	url = httpPrefix(url)
 	resp, err := http.Get(url)
@@ -34,7 +37,8 @@ func fetch(url string, ch chan<- string) {
 	if err != nil {
 		log.Printf("read: %v\n", err)
 	}
-	ch <- fmt.Sprintf("%.2fs %7d %s", time.Since(start).Seconds(), nbytes, url)
+	ch <- fmt.Sprintf("%.2fs %7d %s", time.Since(start).Seconds(), nbytes, url) //暂停处
+	fmt.Println("end fetch", url)
 }
 
 func httpPrefix(url string) string {
