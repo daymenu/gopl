@@ -18,14 +18,14 @@ const (
 	link   = "link"
 )
 
-var linkTags = map[string]string{
-	a:      "href",
-	img:    "src",
-	audio:  "src",
-	embed:  "src",
-	video:  "src",
-	script: "src",
-	link:   "href",
+var linkTags = map[string][]string{
+	a:      {"href"},
+	img:    {"src"},
+	audio:  {"src"},
+	embed:  {"src"},
+	video:  {"src"},
+	script: {"src"},
+	link:   {"href"},
 }
 
 func GetHtml(url string) ([]byte, error) {
