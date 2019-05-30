@@ -1,0 +1,10 @@
+github.com/go-sql-driver/mysql v1.4.1 h1:g24URVg0OFbNUTx9qqY1IRZ9D9z3iPyi5zKhQZpNwpA=
+github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
+github.com/golang/crypto v0.0.0-20190513172903-22d7a77e9e5f/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
+github.com/golang/net v0.0.0-20190520210107-018c4d40a106/go.mod h1:t9HGtf8HONx5eT2rtn7q6eTqICYqUVnKs3thJo3Qplg=
+github.com/golang/sync v0.0.0-20190423024810-112230192c58 h1:FVziwFqxtCKvWuys1e98ng/JsDBTeuqRNI/P2yxNfzI=
+github.com/golang/sync v0.0.0-20190423024810-112230192c58/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+github.com/golang/sys v0.0.0-20190520201301-c432e742b0af/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+github.com/golang/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
+github.com/golang/tools v0.0.0-20190520220859-26647e34d3c0 h1:zjNX57zcZctmLQGt2SbuL2r5oBJzpirFRwRDK6JK9Lk=
+github.com/golang/tools v0.0.0-20190520220859-26647e34d3c0/go.mod h1:RgjU9mgBXZiqYHBnxXauZ1Gv1EHHAz9KjViQ78xBX0Q=

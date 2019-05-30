@@ -5,14 +5,16 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gopl/web/models"
+	"gopl/web/models"
 
-	"github.com/gopl/web/controllers"
+	"gopl/web/controllers"
 )
 
 func main() {
 	defer models.Close()
 	http.HandleFunc("/user", controllers.User)
 	fmt.Println("http server is start")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	mux := http.NewServeMux()
+	mux.HandleFunc("/muser", controllers.User)
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }

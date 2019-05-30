@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gopl/web/models"
+	"gopl/web/models"
 )
 
 func Show(w http.ResponseWriter, r *http.Request) {

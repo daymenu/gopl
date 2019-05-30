@@ -1,4 +1,4 @@
-module github.com/daymenu/gopl
+module gopl
 
 go 1.12
 
@@ -9,4 +9,9 @@ replace (
 	golang.org/x/sys => github.com/golang/sys v0.0.0-20190520201301-c432e742b0af
 	golang.org/x/text => github.com/golang/text v0.3.2
 	golang.org/x/tools => github.com/golang/tools v0.0.0-20190520220859-26647e34d3c0
+)
+
+require (
+	github.com/go-sql-driver/mysql v1.4.1
+	golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2 // indirect
 )
