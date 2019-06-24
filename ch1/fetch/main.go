@@ -29,6 +29,5 @@ func httpPrefix(url string) string {
 	if !strings.HasPrefix(url, "http://") {
 		url = "http://" + url
 	}
-
 	return url
 }

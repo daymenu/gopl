@@ -17,7 +17,7 @@ func main() {
 			log.Printf("fetch: %v\n", err)
 		}
 		defer resp.Body.Close()
-		fmt.Println(resp.Status)
+		fmt.Println("http code:", resp.Status)
 		_, err = io.Copy(os.Stdout, resp.Body)
 		if err != nil {
 			log.Printf("read: %v\n", err)
