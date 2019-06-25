@@ -14,7 +14,7 @@ const (
 	angle         = math.Pi / 6
 )
 
-var sin30, cons30 = math.Sin(angle), math.Cos(angle)
+var sin30, cos30 = math.Sin(angle), math.Cos(angle)
 
 func surface() string {
 	svg := fmt.Sprintf("<svg xmlns='http://www.w3.org/2000/svg' "+
@@ -34,15 +34,17 @@ func surface() string {
 }
 
 func corner(i, j int) (float64, float64) {
+	// Find point (x,y) at corner of cell (i,j).
 	x := xyrange * (float64(i)/cells - 0.5)
 	y := xyrange * (float64(j)/cells - 0.5)
+	// Compute surface height z.
 	z := f(x, y)
-	sx := width / 2 * (x - y) * cons30 * xyscale
-	sy := height/2 + (x+y)*sin30*xyrange - z*zscale
+	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
+	sx := width/2 + (x-y)*cos30*xyscale
+	sy := height/2 + (x+y)*sin30*xyscale - z*zscale
 	return sx, sy
 }
-
 func f(x, y float64) float64 {
-	r := math.Hypot(x, y)
-	return math.Sin(r)
+	r := math.Hypot(x, y) // distance from (0,0)
+	return math.Sin(r) / r
 }
