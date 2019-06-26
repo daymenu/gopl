@@ -8,7 +8,8 @@ import (
 func main() {
 	ages := map[string]int{
 		"liming":   23,
-		"gutianle": 43}
+		"gutianle": 43,
+	}
 	// fmt.Println(ages)
 
 	// delete(ages, "liming")
