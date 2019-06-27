@@ -1,0 +1,5 @@
+package xkcd
+
+func main(){
+	
+}
