@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/gopl/ch5/links"
+	"gopl/ch5/links"
 )
 
 func main() {

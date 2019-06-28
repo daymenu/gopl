@@ -13,5 +13,5 @@ replace (
 
 require (
 	github.com/go-sql-driver/mysql v1.4.1
-	golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2 // indirect
+	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
 )
