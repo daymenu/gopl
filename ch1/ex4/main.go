@@ -11,7 +11,7 @@ import (
 
 func main() {
 	counts := make(map[string]int)
-	files := make(map[string]string)
+	files := make(map[string][]string)
 	if len(os.Args[1:]) == 0 {
 		countlines(os.Stdin, counts, files)
 	} else {
@@ -33,13 +33,12 @@ func main() {
 	}
 }
 
-func countlines(f *os.File, counts map[string]int, files map[string]string) {
+func countlines(f *os.File, counts map[string]int, files map[string][]string) {
 	fileName := f.Name()
 	input := bufio.NewScanner(f)
 	for input.Scan() {
 		text := input.Text()
-		fmt.Print(text)
 		counts[text]++
-		files[text] = fileName
+		files[text] = append(files[text], fileName)
 	}
 }

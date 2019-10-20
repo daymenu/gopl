@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gopl/ch2/tempconv"
 	"fmt"
+	"gopl/ch2/tempconv"
 	"os"
 	"strconv"
 )
