@@ -12,6 +12,7 @@ replace (
 )
 
 require (
+	fyne.io/fyne v1.1.2
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/golang/protobuf v1.3.1 // indirect
 	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
