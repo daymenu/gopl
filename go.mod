@@ -13,7 +13,16 @@ replace (
 
 require (
 	fyne.io/fyne v1.1.2
+	github.com/go-redis/redis v6.15.6+incompatible
 	github.com/go-sql-driver/mysql v1.4.1
-	github.com/golang/protobuf v1.3.1 // indirect
-	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
+	github.com/gotk3/gotk3 v0.0.0-20191027191019-60cba67d4ea4
+	github.com/lxn/walk v0.0.0-20191113135339-bf589de20b3c
+	github.com/lxn/win v0.0.0-20191106123917-121afc750dd3 // indirect
+	github.com/mattn/go-gtk v0.0.0-20191030024613-af2e013261f5
+	github.com/mattn/go-pointer v0.0.0-20190911064623-a0a44394634f // indirect
+	github.com/onsi/ginkgo v1.10.3 // indirect
+	github.com/onsi/gomega v1.7.1 // indirect
+	golang.org/x/net v0.0.0-20190603091049-60506f45cf65
+	google.golang.org/appengine v1.6.5 // indirect
+	gopkg.in/Knetic/govaluate.v3 v3.0.0 // indirect
 )
