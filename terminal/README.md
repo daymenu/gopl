@@ -1,0 +1,1 @@
+下载gtk的依赖 http://ftp.acc.umu.se/pub/gnome/binaries/
