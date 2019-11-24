@@ -26,7 +26,7 @@ func main() {
 		log.Println("application activate")
 
 		// Get the GtkBuilder UI definition in the glade file.
-		builder, err := gtk.BuilderNewFromFile("example.glade")
+		builder, err := gtk.BuilderNewFromFile("glade/index.glade")
 		errorCheck(err)
 
 		// Map the handlers to callback functions, and connect the signals
@@ -37,7 +37,7 @@ func main() {
 		builder.ConnectSignals(signals)
 
 		// Get the object with the id of "main_window".
-		obj, err := builder.GetObject("main_window")
+		obj, err := builder.GetObject("window")
 		errorCheck(err)
 
 		// Verify that the object is a pointer to a gtk.ApplicationWindow.
