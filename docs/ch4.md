@@ -64,5 +64,36 @@ map中的数据是随机的，所以要依照key的顺序输出，需要先对ke
 
 ## 结构体
 
+> 结构体是一种聚合的数据类型，是由零个或多个任意类型的值聚合成的实体。每个值成为结构体的成员。
+
+- 定义
+
+```go
+// People 定义一个人类的结构体
+type People struct {
+    name string
+    age int
+    sex int
+}
+
+// 字面量初始化
+p0 := People{"lining", 23, 2}
+p := People{
+    name: "xiaoming",
+    age: 32,
+    sex: 1,
+}
+fmt.Println(p0,p)
+
+// new 函数初始化
+p1 := new(People)
+p1.name = "lili"
+fmt.Println(p1)
+
+// 声明式初始化
+var p2 People
+p2.name = "lisi"
+fmt.Println(p2)
+```
 
 end

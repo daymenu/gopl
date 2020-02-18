@@ -2,47 +2,49 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
 )
+
+type People struct {
+	name string
+	age  int
+	sex  int
+}
+type Emplyee struct {
+	People
+	title string // 职称
+}
+
+type Speaker interface {
+	Speak()
+}
 
 const boilingF = 212.0
 
-const (
-	//Monday 星期一
-	Monday = 2 + iota
-	//Tuesday 星期二
-	Tuesday
-	//Wednesday 星期三
-	Wednesday
-	//Thursday 星期四
-	Thursday
-	//Friday 星期五
-	Friday
-	//Saturday 星期六
-	Saturday
-	//Sunday 星期日
-	Sunday
-)
+func (p *People) Speak() {
+	fmt.Println(p.name)
+}
 
-const (
-	_ = 1 << (10 * iota)
-	KiB
-	MiB
-	GiB
-	TiB
-	PiB
-	EiB
-	ZiB
-	YiB
-)
-
-const (
-	s1 = 1
-	s2
-	s3
-)
-
+func Talk(s Speaker) {
+	s.Speak()
+}
 func main() {
 	var f = boilingF
 	var c = (f - 32) * 5 / 9
 	fmt.Printf("boiling point = %g°F  or %g°C\n", f, c)
+	p := People{name: "lili"}
+	Talk(&p)
+
+	log.SetOutput(os.Stdout)
+	log.Println("hello")
+
+	var a interface{}
+	a = "aa"
+	switch a.(type) {
+	case int:
+		fmt.Println(" i am int")
+	case string:
+		fmt.Println("i am string")
+	}
 }
