@@ -38,4 +38,23 @@ case string:
 }
 ```
 
+## time 使用
+
+```go
+nowTime := time.Now()
+t := nowTime.Format(ShowTime)
+
+tenAfter := nowTime.Add(10 * time.Minute)
+
+d := tenAfter.Sub(nowTime)
+
+fmt.Println(d)
+
+fmt.Println(t)
+
+fmt.Println(tenAfter.Format(ShowTime))
+
+fmt.Println(time.Parse(ShowTime, tenAfter.Format(ShowTime)))
+```
+
 end

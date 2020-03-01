@@ -21,6 +21,7 @@ require (
 	github.com/mattn/go-pointer v0.0.0-20190911064623-a0a44394634f // indirect
 	github.com/onsi/ginkgo v1.10.3 // indirect
 	github.com/onsi/gomega v1.7.1 // indirect
+	github.com/sirupsen/logrus v1.4.2
 	golang.org/x/net v0.0.0-20190603091049-60506f45cf65
 	google.golang.org/appengine v1.6.5 // indirect
 	gopkg.in/Knetic/govaluate.v3 v3.0.0 // indirect
